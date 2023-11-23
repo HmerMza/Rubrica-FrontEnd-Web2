@@ -12,13 +12,17 @@ import {
 } from "@nextui-org/react";
 import { MailIcon } from "../assets/MailIcon.jsx";
 import { LockIcon } from "../assets/LockIcon.jsx";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
+import { ProductContext } from "../Hooks/productContext.jsx";
+import { guardarToken } from "../Hooks/useToken.jsx";
 
 export default function App() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const { setUser } = useContext(ProductContext);
 
   const iniciarSesion = async (e) => {
     e.preventDefault();
@@ -27,7 +31,9 @@ export default function App() {
         username,
         password,
       });
-      // Hacer algo con la respuesta si es necesario
+      const token = response.data.token;
+      setUser(response.data.isAdmin);
+      guardarToken(token);
       console.log("Respuesta del servidor:", response.data);
     } catch (error) {
       console.error("Hubo un error al iniciar sesión:", error);

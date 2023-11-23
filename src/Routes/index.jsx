@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
         element: <PageHome />,
       },
       {
-        path: "/Editar",
+        path: "/Editar/:codigo",
         element: <PageEditProd />,
       },
       {
