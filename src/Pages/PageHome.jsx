@@ -19,7 +19,7 @@ const PageHome = () => {
 
   return (
     <>
-      <div className="flex justify-around items-center m-auto flex-wrap">
+      <div className="container flex justify-around items-center m-auto flex-wrap">
         {productos.map((producto, index) => (
           <CompCard producto={producto} key={index} />
         ))}

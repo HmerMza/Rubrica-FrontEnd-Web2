@@ -1,10 +1,12 @@
 import { Button, Input, Slider, Textarea } from "@nextui-org/react";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { obtenerToken, useActiveUser } from "../Hooks/useToken";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const PageEditProd = () => {
+  //para redirigir
+  const navigate = useNavigate();
   //aqui guardare los datos del obtjeto entrante
   const [datos, setDatos] = useState({});
   //estos son los datos de los inputs
@@ -58,7 +60,7 @@ const PageEditProd = () => {
     cantidad_en_stock,
     imagen_url,
   };
-
+  //enviar los nuevos campos
   const handleClick = (e) => {
     e.preventDefault();
     const endpoint = `http://localhost:1005/api/products/${codigo}`;
@@ -76,6 +78,7 @@ const PageEditProd = () => {
       .then((response) => {
         // Manejar la respuesta si es necesario
         console.log("Respuesta del servidor:", response.data);
+        navigate("/");
       })
       .catch((error) => {
         // Manejar errores
@@ -98,6 +101,7 @@ const PageEditProd = () => {
             onChange={(e) => setNombre(e.target.value)}
             onClear={() => setNombre("")}
             className="my-4"
+            variant="faded"
           />
           <Input
             type="number"
@@ -111,6 +115,7 @@ const PageEditProd = () => {
             className="mb-4"
             value={precio}
             onChange={(e) => setPrecio(e.target.value)}
+            variant="faded"
           />
           <Input
             type="text"
@@ -119,6 +124,7 @@ const PageEditProd = () => {
             className="mb-4"
             value={imagen_url}
             onChange={(e) => setImagen(e.target.value)}
+            variant="faded"
           />
           <Slider
             label="Stock"
@@ -139,6 +145,7 @@ const PageEditProd = () => {
             className="mb-4"
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
+            variant="faded"
           />
           <Button fullWidth color="primary" type="submit">
             Guardar

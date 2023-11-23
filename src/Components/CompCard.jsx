@@ -34,7 +34,7 @@ const CompCard = ({ producto }) => {
   };
 
   return (
-    <div className="w-[240px]">
+    <div className="w-[240px] my-7 mx-3">
       <Card
         isFooterBlurred
         className="w-full h-[300px] col-span-12 sm:col-span-5"

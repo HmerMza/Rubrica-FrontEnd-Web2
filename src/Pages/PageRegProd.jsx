@@ -2,13 +2,18 @@ import { Button, Input, Slider, Textarea } from "@nextui-org/react";
 import { useState } from "react";
 import { obtenerToken } from "../Hooks/useToken";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const PageRegProd = () => {
+  //datos de los inputs
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [precio, setPrecio] = useState(0);
   const [cantidad_en_stock, setStock] = useState(1);
   const [imagen_url, setImagen] = useState("");
+
+  //para redireccionar
+  const navigate = useNavigate();
 
   const token = obtenerToken();
   const datosProducto = {
@@ -36,6 +41,7 @@ const PageRegProd = () => {
       .then((response) => {
         // Manejar la respuesta si es necesario
         console.log("Respuesta del servidor:", response.data);
+        navigate("/");
       })
       .catch((error) => {
         // Manejar errores
