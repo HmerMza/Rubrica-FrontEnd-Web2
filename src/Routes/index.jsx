@@ -4,6 +4,8 @@ import LayoutPrincipal from "../Layouts/LayoutPrincipal";
 import PageHome from "../Pages/PageHome";
 import PageEditProd from "../Pages/PageEditProd";
 import PageRegProd from "../Pages/PageRegProd";
+import PageRegUser from "../Pages/PageRegUser";
+import PageVentas from "../Pages/PageVentas";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ export const router = createBrowserRouter([
       {
         path: "/Registrar",
         element: <PageRegProd />,
+      },
+      {
+        path: "/registre-user",
+        element: <PageRegUser />,
+      },
+      {
+        path: "/ventas/:codigo",
+        element: <PageVentas />,
       },
     ],
   },

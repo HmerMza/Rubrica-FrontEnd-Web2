@@ -50,7 +50,7 @@ const CompCard = ({ producto }) => {
         />
         <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
           <div className="w-[50%]">
-            <p className="text-black text-tiny">{descripcion}</p>
+            <p className="text-black text-lg text-tiny">{descripcion}</p>
           </div>
           {user ? (
             <>
@@ -78,6 +78,8 @@ const CompCard = ({ producto }) => {
               color="primary"
               radius="full"
               size="sm"
+              as={Link}
+              to={`/ventas/${codigo}`}
             >
               Comprar
             </Button>

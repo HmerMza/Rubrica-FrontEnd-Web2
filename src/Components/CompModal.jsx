@@ -6,9 +6,7 @@ import {
   ModalFooter,
   Button,
   useDisclosure,
-  Checkbox,
   Input,
-  Link,
 } from "@nextui-org/react";
 import { MailIcon } from "../assets/MailIcon.jsx";
 import { LockIcon } from "../assets/LockIcon.jsx";
@@ -16,6 +14,7 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { ProductContext } from "../Hooks/productContext.jsx";
 import { guardarToken } from "../Hooks/useToken.jsx";
+import { Link } from "react-router-dom";
 
 export default function App() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -72,14 +71,12 @@ export default function App() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <div className="flex py-2 px-1 justify-between">
-                  <Checkbox
-                    classNames={{
-                      label: "text-small",
-                    }}
+                  <Link
+                    color="primary"
+                    to={"/registre-user"}
+                    size="sm"
+                    onClick={onClose}
                   >
-                    Recordarme
-                  </Checkbox>
-                  <Link color="primary" href="#" size="sm">
                     Registrarse
                   </Link>
                 </div>
