@@ -5,6 +5,7 @@ import PageHome from "../Pages/PageHome";
 import PageEditProd from "../Pages/PageEditProd";
 import PageRegProd from "../Pages/PageRegProd";
 import PageRegUser from "../Pages/PageRegUser";
+import PageNewVentas from "../Pages/PageNewVentas";
 import PageVentas from "../Pages/PageVentas";
 
 export const router = createBrowserRouter([
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       },
       {
         path: "/ventas/:codigo",
+        element: <PageNewVentas />,
+      },
+      {
+        path: "/prueba",
         element: <PageVentas />,
       },
     ],

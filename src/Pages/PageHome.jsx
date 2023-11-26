@@ -15,7 +15,7 @@ const PageHome = () => {
     };
 
     obtenerProductos();
-  }, []);
+  }, [productos]);
 
   return (
     <>

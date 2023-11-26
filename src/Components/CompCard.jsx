@@ -13,7 +13,7 @@ const CompCard = ({ producto }) => {
   const { user } = useContext(ProductContext);
   const { nombre, imagen_url, descripcion, codigo } = producto;
   const token = obtenerToken();
-  const probarnumero = (codigo) => {
+  const eliminarProducto = (codigo) => {
     const endpointEliminar = `http://localhost:1005/api/products/${codigo}`;
     const config = {
       headers: {
@@ -50,7 +50,7 @@ const CompCard = ({ producto }) => {
         />
         <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
           <div className="w-[50%]">
-            <p className="text-black text-lg text-tiny">{descripcion}</p>
+            <p className="text-black text-tiny">{descripcion}</p>
           </div>
           {user ? (
             <>
@@ -61,15 +61,16 @@ const CompCard = ({ producto }) => {
                 as={Link}
                 to={`/editar/${codigo}`}
               >
-                <EditIcon />
+                <EditIcon className="text-xl" />
               </Button>
+
               <Button
                 isIconOnly
                 color="danger"
                 aria-label="Like"
-                onClick={() => probarnumero(codigo)}
+                onClick={() => eliminarProducto(codigo)}
               >
-                <DeleteIcon />
+                <DeleteIcon className="text-xl" />
               </Button>
             </>
           ) : (
