@@ -17,8 +17,6 @@ import { Link } from "react-router-dom";
 import { Toaster, toast } from "sonner";
 
 const CompTabla = ({ columns, users }) => {
-  //estado para las alert
-  const [alert, setAlert] = useState(false);
   //para eliminar el registro
   const token = obtenerToken();
   //prueba
@@ -35,7 +33,6 @@ const CompTabla = ({ columns, users }) => {
         action: {
           label: "SI",
           onClick: () => {
-            setAlert(true);
             eliminarVenta(codigo);
           },
         },
@@ -81,7 +78,13 @@ const CompTabla = ({ columns, users }) => {
       case "actions":
         return (
           <div className="relative flex items-center gap-2">
-            <Button isIconOnly color="success" aria-label="Like" as={Link}>
+            <Button
+              isIconOnly
+              color="success"
+              aria-label="Like"
+              as={Link}
+              to={`/editar-ventas/${user.codigo}`}
+            >
               <EditIcon className="text-xl" />
             </Button>
             <Button
@@ -89,7 +92,6 @@ const CompTabla = ({ columns, users }) => {
               color="danger"
               aria-label="Like"
               onClick={() => {
-                setAlert(false);
                 handleDeleteProduct(user.codigo);
               }}
             >
@@ -104,7 +106,6 @@ const CompTabla = ({ columns, users }) => {
 
   return (
     <>
-      <Toaster richColors={alert} />
       <Table aria-label="Ventas Registradas">
         <TableHeader columns={columns}>
           {(column) => (

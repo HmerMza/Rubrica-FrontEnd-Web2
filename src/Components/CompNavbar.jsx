@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -8,15 +8,19 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
+  Button,
 } from "@nextui-org/react";
 import CompModal from "./CompModal";
 
 import { Link as ReactRouterLink } from "react-router-dom";
+import { ProductContext } from "../Hooks/productContext";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const { user } = useContext(ProductContext);
 
-  const menuItems = ["Home", "Registrar"];
+  const menuItems = (user && ["Home", "Registrar"]) ||
+    (user === false && ["Home", "Ventas"]) || ["Home"];
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
@@ -45,7 +49,11 @@ export default function App() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          <CompModal />
+          {user !== null ? (
+            <Button color="secondary">Cerrar sesion</Button>
+          ) : (
+            <CompModal />
+          )}
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>

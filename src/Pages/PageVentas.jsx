@@ -21,6 +21,7 @@ const PageVentas = () => {
   };
   //peticiones de axios
   const [ventas, setVentas] = useState([]);
+
   useEffect(() => {
     const obtenerVentas = async () => {
       try {

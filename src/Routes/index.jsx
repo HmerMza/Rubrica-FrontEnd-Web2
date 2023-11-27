@@ -7,6 +7,7 @@ import PageRegProd from "../Pages/PageRegProd";
 import PageRegUser from "../Pages/PageRegUser";
 import PageNewVentas from "../Pages/PageNewVentas";
 import PageVentas from "../Pages/PageVentas";
+import PageEditVentas from "../Pages/PageEditVentas";
 
 export const router = createBrowserRouter([
   {
@@ -34,8 +35,12 @@ export const router = createBrowserRouter([
         element: <PageNewVentas />,
       },
       {
-        path: "/prueba",
+        path: "/ventas",
         element: <PageVentas />,
+      },
+      {
+        path: "/editar-ventas/:codigo",
+        element: <PageEditVentas />,
       },
     ],
   },
